@@ -1,0 +1,15 @@
+{
+  "name": "des-lab",
+  "version": "1.0.0",
+  "description": "DES encryption algorithm",
+  "scripts": {
+    "build:css": "tailwind -i src/style.css -o dist/style.css"
+  },
+  "main": "index.js",
+  "author": "taras yurts",
+  "license": "MIT",
+  "dependencies": {
+    "tailwindcss": "^2.2.19"
+  },
+  "devDependencies": {}
+}
