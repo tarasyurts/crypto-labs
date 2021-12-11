@@ -58,12 +58,9 @@ function binaryDataIntoString(buffer) {
 }
 
 function changeChunkRowLen(chunk, rowLength) {
-    if (chunk[0].length > rowLength) {
-        return chunk.reduce((acc, val) => [ ...acc, ...sliceBinaryStringIntoChunks(val, rowLength) ], [])
-    } else if (chunk[0].length < rowLength) {
-        return sliceBinaryStringIntoChunks(joinBinaryString(chunk), rowLength)
-    }
-    return chunk
+    if (chunk[0].length === rowLength)
+        return chunk
+    return sliceBinaryStringIntoChunks(joinBinaryString(chunk), rowLength)
 }
 
 function shift(arr, times, side) {
@@ -73,11 +70,15 @@ function shift(arr, times, side) {
 }
 
 function XORChunks(chunkA, chunkB) {
-    console.log('XOR');
-    console.log('chunkA', chunkA);
-    console.log('chunkB', chunkB);
-    console.log('=======\nres', sliceIntoChunks(addEmptyBites((parseInt(joinBinaryString(chunkA), 2) ^ parseInt(joinBinaryString(chunkB), 2)).toString(2), chunkA[0].length * chunkA.length), chunkA[0].length));
-    return sliceIntoChunks(addEmptyBites((parseInt(joinBinaryString(chunkA), 2) ^ parseInt(joinBinaryString(chunkB), 2)).toString(2), chunkA[0].length * chunkA.length), chunkA[0].length)
+    console.log('aChunk', chunkA);
+    console.log('bChunk', chunkB);
+    
+    let [a, b] = [joinBinaryString(chunkA), joinBinaryString(chunkB)]
+
+    console.log('aBin', a)
+    console.log('aBin', b)
+
+    return sliceBinaryStringIntoChunks(addEmptyBites(a.split('').reduce((acc, ch, idx) => [...acc, (parseInt(ch) ^ parseInt(b[idx])).toString(2) ], []).join(''), chunkA[0].length * chunkA.length), chunkA[0].length)
 }
 
 export {

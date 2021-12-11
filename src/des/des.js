@@ -18,7 +18,6 @@ function computeDesChunk(chunk, key, mode = 'encode') {
     const [keyLPerm, keyRPerm] = [pc1Perm(key, 'left'), pc1Perm(key, 'right')] 
 
     for (let i = 0; i < 16; i++) {
-        if (i == 3) debugger
         const extended = pBoxExt(rChunk).map(_ => _.join(''))
             , shiftedKey = [u.joinBinaryString(keyLPerm), u.joinBinaryString(keyRPerm)]
                 .map(_ => u.shift(_, shifts[i], mode === 'encode' ? 'left' : 'right').join(''))
