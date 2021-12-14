@@ -2,6 +2,7 @@ import des from './des/des.js'
 import galoisField from './galois-field/galois-field.js'
 import { isPrime } from './rsa/utils.js'
 import * as RSA from './rsa/rsa.js'
+import { logResults } from './modul-arithm/modul-arithm.js'
 import { navs, initState } from './const.js'
 
 let state = {}
@@ -69,6 +70,8 @@ const updateView = (state) => {
     }
 }
 
+logResults()
+
 window?.addEventListener('load', () => setState(initState))
 
 document?.addEventListener('click', (e) => {
@@ -77,6 +80,7 @@ document?.addEventListener('click', (e) => {
             setState({...state, nav: e.target.dataset.nav })
         }
     } else if (state.nav === 'DES' && e.target.id === 'encodeBtn' || e.target.id === 'decodeBtn') {
+
         const encodeInput = document.querySelector('#encodeInput')
             , decodeInput = document.querySelector('#decodeInput')
             , key = document.querySelector('#key')
@@ -87,29 +91,34 @@ document?.addEventListener('click', (e) => {
             encodeInput.value = des(decodeInput.value, key.value, 'decode')
         }
     } else if (state.nav === 'GF' && e.target.id === 'cmpResBtn') {
+
         const aInput = document.querySelector('#aInput')
             , bInput = document.querySelector('#bInput')
             , resultInput = document.querySelector('#resultInput')
         
         resultInput.value = galoisField(aInput.value, bInput.value, '100011011')
     } else if (state.nav === 'MILLER-RSA' && e.target.id === 'cmpMillerResBtn') {
+
         const nInput = document.querySelector('#nInput')
             , kInput = document.querySelector('#kInput')
             , resultInput = document.querySelector('#resultInput')
         
         resultInput.value = isPrime(parseInt(nInput.value), parseInt(kInput.value)) ? 'Is Prime' : 'Is Composite'
     } else if (state.nav === 'MILLER-RSA' && e.target.id === 'generateKeysBtn') {
+
         const { n: rsa_n, e: rsa_e, d: rsa_d } = RSA.generate(16)
         e.target.dataset.rsa_n = rsa_n
         e.target.dataset.rsa_e = rsa_e
         e.target.dataset.rsa_d = rsa_d
-    } else if (state.nav === 'MILLER-RSA' && e.target.id === 'encryptBtn') {        
+    } else if (state.nav === 'MILLER-RSA' && e.target.id === 'encryptBtn') {
+
         const { rsa_n, rsa_e, rsa_d } = document.querySelector('#generateKeysBtn').dataset
             , encMsgInput = document.querySelector('#encMsgInput')
             , encMsgResInput = document.querySelector('#encMsgResInput')
 
         encMsgResInput.value = RSA.encrypt(parseInt(encMsgInput.value), rsa_n, rsa_e)
-    } else if (state.nav === 'MILLER-RSA' && e.target.id === 'decryptBtn') {        
+    } else if (state.nav === 'MILLER-RSA' && e.target.id === 'decryptBtn') {
+
         const { rsa_n, rsa_e, rsa_d } = document.querySelector('#generateKeysBtn').dataset
             , decMsgInput = document.querySelector('#decMsgInput')
             , decMsgResInput = document.querySelector('#decMsgResInput')
