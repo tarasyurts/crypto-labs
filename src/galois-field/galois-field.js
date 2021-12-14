@@ -7,11 +7,6 @@ export default function galoisField(aHex, bHex, primitive) {
         , binaryMult = polynToBinary(multyplied)
         , res = galoisMult(binaryMult, primitive)
 
-    console.log('aPolyn', aPolyn)
-    console.log('bPolin', bPolyn)
-    console.log('multPolyns', multyplied)
-    console.log('polynToBinary', binaryMult)
-    console.log('res', res)
     return parseInt(res, 2).toString(16)
 }
 

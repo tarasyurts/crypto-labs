@@ -1,4 +1,4 @@
-const navs = ['DES', 'GF']
+const navs = ['DES', 'GF', 'MILLER-RSA']
 
 const initState = {
     nav: 'DES',

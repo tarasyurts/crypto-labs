@@ -9,6 +9,7 @@
   "author": "taras yurts",
   "license": "MIT",
   "dependencies": {
+    "big-integer": "^1.6.51",
     "tailwindcss": "^2.2.19"
   },
   "devDependencies": {}
