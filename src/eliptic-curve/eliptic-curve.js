@@ -82,15 +82,15 @@ function logResults() {
         , isLaying = pointLayOnFunc(p)
         , q = getQ(p)
         , qPlusP = addP(p, q)
-        // , allPoints = getAllPoints(p)
+        , allPoints = getAllPoints(p)
 
 
-    console.log(`Is point laying on curve: ${isLaying}`)
+    console.log(`Laying on curve: ${isLaying}`)
     console.log(`Q point: X:  ${q.x}, Y: ${q.y}`)
     console.log(`Q + P = (${qPlusP.x}, ${qPlusP.y})`)
-    // console.log(`d: ${allPoints.length}`)
-    // console.log(`points:`)
-    // allPoints.forEach(_ => console.log(`x: ${_.x}, y: ${_.y}`))
+    console.log(`All points len: ${allPoints.length}`)
+    console.log(`All points:`)
+    allPoints.forEach(_ => console.log(`x: ${_.x}, y: ${_.y}`))
 
 }
 
