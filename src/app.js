@@ -2,7 +2,7 @@ import des from './des/des.js'
 import galoisField from './galois-field/galois-field.js'
 import { isPrime } from './rsa/utils.js'
 import * as RSA from './rsa/rsa.js'
-import { logResults } from './eliptic-curve/eliptic-curve.js'
+import { logResults } from './hashing/hashing.js'
 import { navs, initState } from './const.js'
 
 let state = {}

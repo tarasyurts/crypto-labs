@@ -44,6 +44,9 @@ function getMod(n, p) {
 }
 
 function gcdExt(a, b) {
+    if (a == 0)
+        throw 'e'
+
     let x0 = 1, xn = 1, y0 = 0, yn = 0, x1 = 0, y1 = 1, f, r = a % b;
 
     while (r > 0) {
