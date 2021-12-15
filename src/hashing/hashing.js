@@ -92,8 +92,8 @@ function logResults() {
 
     const text = 'my input text'
         , hashed = hash(text)
-    console.log('Input ', text);
-    console.log('Hashed ', hashed.map(_ => _.toString(16)).join('-'))
+    console.log('Input: ', text);
+    console.log('Hashed: ', hashed.map(_ => _.toString(16)).join('-'))
 }
 
 export {
